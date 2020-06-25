@@ -1,24 +1,26 @@
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;;
-}
 
 body {
   font-family: BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
+  background-color: #F3F3F3;
 }
 
+//NavBar
+.nav-container {
+  margin: auto;
+}
 
+//Grid Container
 .container {
-  // width: 375px;
-  display: flex;
-  justify-content: center;
   margin: 80px auto 0 auto;
-
-  .nav-container {
-    margin: auto;
-  }
+  max-width: 1200px;
 }
+
+//Link decoration 
+a{
+  text-decoration: none;
+}
+
+
 
