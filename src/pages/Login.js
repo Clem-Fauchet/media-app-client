@@ -83,7 +83,11 @@ function Login(props) {
 					alt='BookMark Icon'
 					className={classes.image}
 				/>
-				<Typography variant='h2' className={classes.pageTitle}>
+				<Typography
+					variant='h2'
+					color='secondary'
+					className={classes.pageTitle}
+				>
 					Login
 				</Typography>
 				<form noValidate onSubmit={handleSubmit}>

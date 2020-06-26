@@ -10,7 +10,7 @@ export default {
 		},
 		typography: {
 			useNextVariants: true,
-			fontFamily: ['Nunito', 'Lato', 'sans-serif'],
+			fontFamily: ['Nunito', 'Lato', 'sans-serif'].join(','),
 		},
 	},
 	formulaire: {
@@ -27,7 +27,7 @@ export default {
 			margin: '10px auto',
 		},
 		button: {
-			marginTop: 30,
+			margin: '30px auto 15px auto',
 			position: 'relative',
 		},
 		progress: {
