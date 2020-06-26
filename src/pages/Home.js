@@ -15,7 +15,6 @@ function Home() {
 		axios
 			.get('/posts')
 			.then((res) => {
-				console.log(res.data)
 				setState({
 					posts: res.data,
 				})

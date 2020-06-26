@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.scss'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
+import themeFile from './utility/theme'
 
 //Components
 import NavBar from './components/Navbar'
@@ -12,21 +13,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
 
-const theme = createMuiTheme({
-	palette: {
-		primary: {
-			main: '#B33771',
-			contrastText: '#FFF',
-		},
-		secondary: {
-			main: '#6F1E51',
-			contrastText: '#7A7A7A',
-		},
-		typography: {
-			useNextVariants: true,
-		},
-	},
-})
+const theme = createMuiTheme(themeFile)
 
 function App() {
 	return (

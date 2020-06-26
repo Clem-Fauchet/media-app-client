@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+//date format
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+
 //Material Ui Style
 import { withStyles } from '@material-ui/core/styles'
 import { Card } from '@material-ui/core'
@@ -22,10 +26,13 @@ const styles = {
 }
 
 function Post(props) {
+	dayjs.extend(relativeTime)
+
 	const {
 		classes,
 		post: { body, userImage, createdAt, userHandle },
 	} = props
+
 	return (
 		<Card className={classes.card}>
 			<CardMedia
@@ -43,7 +50,7 @@ function Post(props) {
 					{userHandle}
 				</Typography>
 				<Typography variant='body2' color='textSecondary'>
-					{createdAt}
+					{dayjs(createdAt).fromNow()}
 				</Typography>
 				<Typography variant='body1'>{body}</Typography>
 			</CardContent>
