@@ -166,9 +166,11 @@ function SignUp(props) {
 						)}
 					</Button>
 					<br />
-					<small>
-						Already have an account? Login <Link to='/login'>here</Link>
-					</small>
+					<Typography>
+						<small>
+							Already have an account? Login <Link to='/login'>here</Link>
+						</small>
+					</Typography>
 				</form>
 			</Grid>
 			<Grid item sm />

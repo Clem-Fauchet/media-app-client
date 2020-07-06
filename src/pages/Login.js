@@ -136,9 +136,9 @@ function Login(props) {
 						)}
 					</Button>
 					<br />
-					<small>
+					<Typography variant='caption'>
 						Don't have an account? Sign Up <Link to='/signup'>here</Link>
-					</small>
+					</Typography>
 				</form>
 			</Grid>
 			<Grid item sm />

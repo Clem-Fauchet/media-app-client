@@ -1,4 +1,4 @@
-export default {
+const themeFile = {
 	palette: {
 		primary: {
 			main: '#B33771',
@@ -8,11 +8,14 @@ export default {
 			main: '#6F1E51',
 			contrastText: '#7A7A7A',
 		},
-		typography: {
-			useNextVariants: true,
-			fontFamily: ['Nunito', 'Lato', 'sans-serif'].join(','),
-		},
 	},
+
+	typography: {
+		fontFamily: ['sans-serif'].join(','),
+
+		// useNextVariants: true,
+	},
+
 	formulaire: {
 		form: {
 			textAlign: 'center',
@@ -39,3 +42,5 @@ export default {
 		},
 	},
 }
+
+export default themeFile
