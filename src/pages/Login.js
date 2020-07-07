@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import axios from 'axios'
 
 import AppIcon from '../images/bookmarklet.png'
+
+//Redux stuff
+import { connect } from 'react-redux'
+import { loginUser } from '../redux/actions/userAction'
 
 //Material Ui
 import { withStyles, TextField } from '@material-ui/core'
@@ -23,46 +26,24 @@ function Login(props) {
 	const [state, setState] = useState({
 		email: '',
 		password: '',
-		loading: false,
-		errors: {
-			errors: {
-				email: '',
-				password: '',
-			},
-		},
+		errors: {},
 	})
 
 	//submitting form
+	useEffect(() => {
+		if (props.UI.errors) {
+			setState({ ...state, errors: props.UI.errors })
+		}
+	}, [props.UI.errors])
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-
-		setState({ ...state, loading: false })
 
 		const userData = {
 			email: state.email,
 			password: state.password,
 		}
-		axios
-			.post('/login', userData)
-			.then((res) => {
-				console.log(res)
-				localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`)
-				setState({
-					...state,
-					loading: false,
-				})
-				props.history.push('/')
-			})
-			.catch((err) => {
-				setState({
-					...state,
-					errors: err.response.data,
-					loading: false,
-				})
-
-				console.log(state)
-			})
+		props.loginUser(userData, props.history)
 	}
 
 	//changing input value
@@ -148,6 +129,23 @@ function Login(props) {
 
 Login.propTypes = {
 	classes: PropTypes.object.isRequired,
+	loginUser: PropTypes.func.isRequired,
+	user: PropTypes.object.isRequired,
+	UI: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(Login)
+const mapStateToProps = (state) => {
+	return {
+		user: state.user,
+		UI: state.UI,
+	}
+}
+
+const mapActionsToProps = {
+	loginUser,
+}
+
+export default connect(
+	mapStateToProps,
+	mapActionsToProps
+)(withStyles(styles)(Login))
