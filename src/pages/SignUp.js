@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import axios from 'axios'
 
 import AppIcon from '../images/bookmarklet.png'
+
+//Redux Stuff
+import { connect } from 'react-redux'
+import { signUpUser } from '../redux/actions/userAction'
 
 //Material Ui
 import { withStyles, TextField } from '@material-ui/core'
@@ -25,16 +28,15 @@ function SignUp(props) {
 		password: '',
 		confirmPassword: '',
 		handle: '',
-		loading: false,
-		errors: {
-			errors: {
-				email: '',
-				password: '',
-			},
-		},
+		errors: {},
 	})
 
 	//submitting form
+	useEffect(() => {
+		if (props.UI.errors) {
+			setState((prevState) => ({ ...prevState, errors: props.UI.errors }))
+		}
+	}, [props.UI.errors])
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
@@ -47,26 +49,7 @@ function SignUp(props) {
 			confirmPassword: state.confirmPassword,
 			handle: state.handle,
 		}
-		axios
-			.post('/signup', newUserData)
-			.then((res) => {
-				console.log(res)
-				localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`)
-				setState({
-					...state,
-					loading: false,
-				})
-				props.history.push('/')
-			})
-			.catch((err) => {
-				setState({
-					...state,
-					errors: err.response.data,
-					loading: false,
-				})
-
-				console.log(state)
-			})
+		props.signUpUser(newUserData, props.history)
 	}
 
 	//changing input value
@@ -180,6 +163,16 @@ function SignUp(props) {
 
 SignUp.propTypes = {
 	classes: PropTypes.object.isRequired,
+	user: PropTypes.object.isRequired,
+	UI: PropTypes.object.isRequired,
+	signUpUser: PropTypes.func.isRequired,
 }
 
-export default withStyles(styles)(SignUp)
+const mapStateToProps = (state) => ({
+	user: state.user,
+	UI: state.UI,
+})
+
+export default connect(mapStateToProps, { signUpUser })(
+	withStyles(styles)(SignUp)
+)

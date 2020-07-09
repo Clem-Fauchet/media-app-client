@@ -32,7 +32,7 @@ function Login(props) {
 	//submitting form
 	useEffect(() => {
 		if (props.UI.errors) {
-			setState({ ...state, errors: props.UI.errors })
+			setState((prevState) => ({ ...prevState, errors: props.UI.errors }))
 		}
 	}, [props.UI.errors])
 
