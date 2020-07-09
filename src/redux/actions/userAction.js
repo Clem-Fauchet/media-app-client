@@ -2,6 +2,7 @@ import {
 	SET_USER,
 	SET_ERRORS,
 	CLEAR_ERRORS,
+	LOADING_USER,
 	LOADING_UI,
 	SET_UNAUTHENTICATED,
 } from '../types'
@@ -59,6 +60,7 @@ export const logOutUser = (dispatch) => {
 }
 
 export const getUserData = () => (dispatch) => {
+	dispatch({ type: LOADING_USER })
 	axios
 		.get('./user')
 		.then((res) => {

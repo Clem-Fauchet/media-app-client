@@ -5,6 +5,7 @@ import { Grid } from '@material-ui/core'
 
 //Component
 import Post from '../components/Post'
+import Profile from '../components/Profile.js'
 
 function Home() {
 	const [state, setState] = useState({
@@ -34,7 +35,7 @@ function Home() {
 				{recentPostsMarkup}
 			</Grid>
 			<Grid item sm={4} xs={12}>
-				<p>Profile...</p>
+				<Profile />
 			</Grid>
 		</Grid>
 	)

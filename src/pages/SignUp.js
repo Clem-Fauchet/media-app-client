@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import AppIcon from '../images/bookmarklet.png'
+import AppIcon from '../assets/images/bookmarklet.png'
 
 //Redux Stuff
 import { connect } from 'react-redux'
