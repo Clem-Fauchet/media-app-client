@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import Proptypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 //Redux stuff
 import { connect } from 'react-redux'
@@ -19,7 +19,7 @@ const mapStateToProps = (state) => ({
 })
 
 AuthRoute.propTypes = {
-	user: Proptypes.object.isRequired,
+	user: PropTypes.object.isRequired,
 }
 
 export default connect(mapStateToProps)(AuthRoute)

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import dayjs from 'dayjs'
+import EditDetails from './EditDetails'
 
 //Redux stuff
 import { connect } from 'react-redux'
@@ -18,9 +19,9 @@ import { Tooltip } from '@material-ui/core'
 //Icons
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined'
 import LinkOutlinedIcon from '@material-ui/icons/LinkOutlined'
-// import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
 import { ReactComponent as Calendar } from '../assets/icons/calendar.svg'
 import { ReactComponent as QuillInk } from '../assets/icons/quill-ink.svg'
+import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn'
 
 const styles = (theme) => ({
 	paper: {
@@ -102,6 +103,10 @@ function Profile(props) {
 		fileInput.click()
 	}
 
+	const handleLogOut = () => {
+		props.logOutUser()
+	}
+
 	let profileMarkup = !loading ? (
 		authenticated ? (
 			<Paper className={classes.paper}>
@@ -154,6 +159,12 @@ function Profile(props) {
 						{'  '}
 						<span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
 					</div>
+					<LightTooltip title='Log out' placement='top'>
+						<IconButton onClick={handleLogOut}>
+							<KeyboardReturnIcon color='secondary' />
+						</IconButton>
+					</LightTooltip>
+					<EditDetails />
 				</div>
 			</Paper>
 		) : (

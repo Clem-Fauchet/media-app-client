@@ -9,6 +9,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "@types/jwt-decode": "^2.2.1",
+    "@types/react-transition-group": "^4.4.0",
     "axios": "^0.19.2",
     "dayjs": "^1.8.28",
     "gatsby-plugin-web-font-loader": "^1.0.4",
