@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
+import MyButton from '../utility/MyButton'
+
 //Redux stuff
 import { connect } from 'react-redux'
 import { editUserDetails } from '../redux/actions/userAction'
 
 //Material UI
 import { withStyles } from '@material-ui/core/styles'
-import { Tooltip, TextField, Button } from '@material-ui/core'
-import { IconButton } from '@material-ui/core'
+import { TextField, Button } from '@material-ui/core'
 //Form Dialog
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
@@ -24,15 +25,6 @@ const styles = (theme) => ({
 		float: 'right',
 	},
 })
-
-const LightTooltip = withStyles((theme) => ({
-	tooltip: {
-		backgroundColor: theme.palette.common.white,
-		color: 'rgba(0, 0, 0, 0.87)',
-		boxShadow: theme.shadows[1],
-		fontSize: 11,
-	},
-}))(Tooltip)
 
 function EditDetails(props) {
 	const [state, setState] = useState({
@@ -86,11 +78,15 @@ function EditDetails(props) {
 
 	return (
 		<>
-			<LightTooltip title='Edit details' placement='top'>
-				<IconButton onClick={handleOpen} className={classes.button}>
-					<QuillInk style={{ fill: '#6F1E51', width: '26' }} />
-				</IconButton>
-			</LightTooltip>
+			<MyButton
+				tip='Edit details'
+				placement='top'
+				onClick={handleOpen}
+				btnClassName={classes.button}
+			>
+				<QuillInk style={{ fill: '#6F1E51', width: '26' }} />
+			</MyButton>
+
 			<Dialog open={state.open} onClose={handleClose} fullWidth maxWidth='sm'>
 				<DialogTitle>Edit your details</DialogTitle>
 				<DialogContent>

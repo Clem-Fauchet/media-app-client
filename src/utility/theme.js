@@ -41,6 +41,8 @@ const themeFile = {
 			fontSize: '0.8rem',
 		},
 	},
+
+	navBar: {},
 }
 
 export default themeFile

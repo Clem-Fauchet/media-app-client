@@ -2,7 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import dayjs from 'dayjs'
+
 import EditDetails from './EditDetails'
+import MyButton from '../utility/MyButton'
 
 //Redux stuff
 import { connect } from 'react-redux'
@@ -13,8 +15,6 @@ import { withStyles } from '@material-ui/core/styles'
 import { Button, Paper } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import MuiLink from '@material-ui/core/Link'
-import { IconButton } from '@material-ui/core'
-import { Tooltip } from '@material-ui/core'
 
 //Icons
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined'
@@ -71,15 +71,6 @@ const styles = (theme) => ({
 	},
 })
 
-const LightTooltip = withStyles((theme) => ({
-	tooltip: {
-		backgroundColor: theme.palette.common.white,
-		color: 'rgba(0, 0, 0, 0.87)',
-		boxShadow: theme.shadows[1],
-		fontSize: 11,
-	},
-}))(Tooltip)
-
 function Profile(props) {
 	const {
 		classes,
@@ -119,11 +110,14 @@ function Profile(props) {
 							hidden='hidden'
 							onChange={handleImageChange}
 						/>
-						<LightTooltip title='Edit profile picture' placement='top'>
-							<IconButton onClick={handleEditPicture} className='button'>
-								<QuillInk style={{ fill: '#6F1E51', width: '26' }} />
-							</IconButton>
-						</LightTooltip>
+						<MyButton
+							tip='Edit profile picture'
+							placement='top'
+							onClick={handleEditPicture}
+							btnClassName='button'
+						>
+							<QuillInk style={{ fill: '#6F1E51', width: '26' }} />
+						</MyButton>
 					</div>
 					<hr />
 					<div className='profile-details'>
@@ -159,11 +153,9 @@ function Profile(props) {
 						{'  '}
 						<span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
 					</div>
-					<LightTooltip title='Log out' placement='top'>
-						<IconButton onClick={handleLogOut}>
-							<KeyboardReturnIcon color='secondary' />
-						</IconButton>
-					</LightTooltip>
+					<MyButton tip='Log out' onClick={handleLogOut} placement='top'>
+						<KeyboardReturnIcon color='secondary' />
+					</MyButton>
 					<EditDetails />
 				</div>
 			</Paper>
