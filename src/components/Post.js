@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import MyButton from '../utility/MyButton'
+import LikeButton from './LikeButton'
 import DeletePost from './DeletePost'
+import PostDialog from './PostDialog'
 
 //date format
 import dayjs from 'dayjs'
@@ -11,7 +13,6 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 
 //Redux stuff
 import { connect } from 'react-redux'
-import { likePost, unlikePost } from '../redux/actions/dataAction'
 
 //Material Ui Style
 import { withStyles } from '@material-ui/core/styles'
@@ -20,8 +21,6 @@ import { CardContent, CardMedia } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 
 //Icons
-import WhatshotOutlinedIcon from '@material-ui/icons/WhatshotOutlined'
-import WhatshotIcon from '@material-ui/icons/Whatshot'
 import { ReactComponent as Scroll } from '../assets/icons/scroll-quill.svg'
 
 const styles = {
@@ -62,40 +61,6 @@ function Post(props) {
 		},
 	} = props
 
-	const likedPost = () => {
-		if (
-			props.user.likes &&
-			props.user.likes.find((like) => like.postId === props.post.postId)
-		)
-			//if it doesn't find anything return undefined
-			return true
-		else return false
-	}
-
-	const likePost = () => {
-		props.likePost(props.post.postId)
-	}
-
-	const unlikePost = () => {
-		props.unlikePost(props.post.postId)
-	}
-
-	const likeButton = !authenticated ? (
-		<MyButton tip='Fire'>
-			<Link to='/login'>
-				<WhatshotIcon color='secondary' />
-			</Link>
-		</MyButton>
-	) : likedPost() ? (
-		<MyButton tip='UnFire' onClick={unlikePost}>
-			<WhatshotOutlinedIcon color='primary' />
-		</MyButton>
-	) : (
-		<MyButton tip='Fire' onClick={likePost}>
-			<WhatshotIcon color='secondary' />
-		</MyButton>
-	)
-
 	const deleteButton =
 		authenticated && userHandle === handle ? (
 			<DeletePost postId={postId} />
@@ -125,7 +90,7 @@ function Post(props) {
 				<Typography variant='body1'>{body}</Typography>
 
 				<span className={classes.likeBox}>
-					{likeButton}
+					<LikeButton postId={postId} />
 					<span>{likeCount} fires</span>
 				</span>
 
@@ -135,14 +100,13 @@ function Post(props) {
 					</MyButton>
 					<span>{commentCount} comments</span>
 				</span>
+				<PostDialog postId={postId} userHandle={userHandle} />
 			</CardContent>
 		</Card>
 	)
 }
 
 Post.propTypes = {
-	likePost: PropTypes.func.isRequired,
-	unlikePost: PropTypes.func.isRequired,
 	user: PropTypes.object.isRequired,
 	post: PropTypes.object.isRequired,
 	classes: PropTypes.object.isRequired,
@@ -152,12 +116,4 @@ const mapStateToProps = (state) => ({
 	user: state.user,
 })
 
-const mapActionsToProps = {
-	likePost,
-	unlikePost,
-}
-
-export default connect(
-	mapStateToProps,
-	mapActionsToProps
-)(withStyles(styles)(Post))
+export default connect(mapStateToProps)(withStyles(styles)(Post))

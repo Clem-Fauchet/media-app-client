@@ -5,7 +5,7 @@ import MyButton from '../utility/MyButton'
 
 //Redux stuff
 import { connect } from 'react-redux'
-import { addPost } from '../redux/actions/dataAction'
+import { addPost, clearErrors } from '../redux/actions/dataAction'
 
 //Material UI
 import { withStyles } from '@material-ui/core/styles'
@@ -28,6 +28,7 @@ const styles = (theme) => ({
 	submitButton: {
 		position: 'relative',
 		margin: '1em 0',
+		float: 'right',
 	},
 	progressSpinner: {
 		position: 'absolute',
@@ -67,6 +68,7 @@ function AddPost(props) {
 	}
 
 	const handleClose = () => {
+		clearErrors()
 		setState({ ...state, open: false, errors: {} })
 	}
 
@@ -141,9 +143,10 @@ const mapStateToProps = (state) => ({
 
 AddPost.propTypes = {
 	addPost: PropTypes.func.isRequired,
+	clearErrors: PropTypes.func.isRequired,
 	UI: PropTypes.object.isRequired,
 }
 
-export default connect(mapStateToProps, { addPost })(
+export default connect(mapStateToProps, { addPost, clearErrors })(
 	withStyles(styles)(AddPost)
 )

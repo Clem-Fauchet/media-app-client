@@ -136,11 +136,7 @@ function EditDetails(props) {
 					>
 						Submit
 					</Button>
-					<Button
-						style={{ fontWeight: '600' }}
-						onClick={handleClose}
-						color='primary'
-					>
+					<Button style={{ fontWeight: '600' }} onClick={handleClose}>
 						Cancel
 					</Button>
 				</DialogActions>
