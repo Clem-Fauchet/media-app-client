@@ -48,13 +48,28 @@ function Navbar(props) {
 						</>
 					) : (
 						<>
-							<Button color='inherit' component={Link} to='/login'>
+							<Button
+								color='inherit'
+								component={Link}
+								to='/login'
+								className={classes.navButton}
+							>
 								Login
 							</Button>
-							<Button color='inherit' component={Link} to='/'>
+							<Button
+								color='inherit'
+								component={Link}
+								to='/'
+								className={classes.navButton}
+							>
 								Home
 							</Button>
-							<Button color='inherit' component={Link} to='/signup'>
+							<Button
+								color='inherit'
+								component={Link}
+								to='/signup'
+								className={classes.navButton}
+							>
 								Sign Up
 							</Button>
 						</>
