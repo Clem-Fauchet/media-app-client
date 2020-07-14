@@ -108,7 +108,7 @@ function EditDetails(props) {
 							name='website'
 							type='text'
 							label='Website'
-							placeholder='Your personnal/professional site'
+							placeholder='Your personal/professional site'
 							className={classes.textField}
 							value={state.website}
 							onChange={handleChange}

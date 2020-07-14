@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+
 import MyButton from '../utility/MyButton'
+import AddPost from './AddPost'
 
 //Redux Stuff
 import { connect } from 'react-redux'
@@ -12,8 +14,8 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
 
+
 //Icons
-import AddOutlinedIcon from '@material-ui/icons/AddOutlined'
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded'
 import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined'
 
@@ -32,9 +34,7 @@ function Navbar(props) {
 				<Toolbar className='nav-container'>
 					{authenticated ? (
 						<>
-							<MyButton tip='Create a post' btnClassName={classes.navButton}>
-								<AddOutlinedIcon />
-							</MyButton>
+						<AddPost/>
 
 							<MyButton tip='Home' btnClassName={classes.navButton}>
 								<Link to='/'>
