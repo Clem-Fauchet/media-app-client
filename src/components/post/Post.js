@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import MyButton from '../utility/MyButton'
+import MyButton from '../../utility/MyButton'
 import LikeButton from './LikeButton'
 import DeletePost from './DeletePost'
 import PostDialog from './PostDialog'
@@ -21,7 +21,7 @@ import { CardContent, CardMedia } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 
 //Icons
-import { ReactComponent as Scroll } from '../assets/icons/scroll-quill.svg'
+import { ReactComponent as Scroll } from '../../assets/icons/scroll-quill.svg'
 
 const styles = {
 	card: {

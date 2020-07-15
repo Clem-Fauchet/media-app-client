@@ -9,16 +9,15 @@ import { getPosts } from '../redux/actions/dataAction'
 import { Grid } from '@material-ui/core'
 
 //Component
-import Post from '../components/Post'
-import Profile from '../components/Profile.js'
+import Post from '../components/post/Post'
+import Profile from '../components/profile/Profile.js'
 
 function Home(myData) {
+	const { data } = myData
 
-	const {data} = myData
-	
-	useEffect(() =>{
-	 myData.getPosts()
-	}, [])
+	useEffect(() => {
+		myData.getPosts()
+	}, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 	let recentPostsMarkup = !data.loading ? (
 		data.posts.map((post, key) => <Post post={post} key={key} />)

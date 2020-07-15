@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 import dayjs from 'dayjs'
 
 import EditDetails from './EditDetails'
-import MyButton from '../utility/MyButton'
+import MyButton from '../../utility/MyButton'
 
 //Redux stuff
 import { connect } from 'react-redux'
-import { logOutUser, uploadImage } from '../redux/actions/userAction'
+import { logOutUser, uploadImage } from '../../redux/actions/userAction'
 
 //Material UI
 import { withStyles } from '@material-ui/core/styles'
@@ -19,8 +19,8 @@ import MuiLink from '@material-ui/core/Link'
 //Icons
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined'
 import LinkOutlinedIcon from '@material-ui/icons/LinkOutlined'
-import { ReactComponent as Calendar } from '../assets/icons/calendar.svg'
-import { ReactComponent as QuillInk } from '../assets/icons/quill-ink.svg'
+import { ReactComponent as Calendar } from '../../assets/icons/calendar.svg'
+import { ReactComponent as QuillInk } from '../../assets/icons/quill-ink.svg'
 import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn'
 
 const styles = (theme) => ({

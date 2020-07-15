@@ -2,11 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import MyButton from '../utility/MyButton'
+import MyButton from '../../utility/MyButton'
 
 //Redux stuff
 import { connect } from 'react-redux'
-import { likePost, unlikePost } from '../redux/actions/dataAction'
+import { likePost, unlikePost } from '../../redux/actions/dataAction'
 
 //Icons
 import WhatshotOutlinedIcon from '@material-ui/icons/WhatshotOutlined'

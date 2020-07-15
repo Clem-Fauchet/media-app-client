@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import MyButton from '../utility/MyButton'
+import MyButton from '../../utility/MyButton'
 
 //Redux stuff
 import { connect } from 'react-redux'
-import { addPost, clearErrors } from '../redux/actions/dataAction'
+import { addPost, clearErrors } from '../../redux/actions/dataAction'
 
 //Material UI
 import { withStyles } from '@material-ui/core/styles'
@@ -61,7 +61,7 @@ function AddPost(props) {
 		if (!props.UI.errors && !props.UI.loading) {
 			setState({ body: '', open: false, errors: {} })
 		}
-	}, [props.UI.errors])
+	}, [props.UI.errors]) // eslint-disable-line react-hooks/exhaustive-deps
 
 	const handleOpen = () => {
 		setState({ ...state, open: true })

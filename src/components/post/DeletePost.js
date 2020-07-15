@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import MyButton from '../utility/MyButton'
+import MyButton from '../../utility/MyButton'
 
 //Redux stuff
 import { connect } from 'react-redux'
-import { deletePost } from '../redux/actions/dataAction'
+import { deletePost } from '../../redux/actions/dataAction'
 
 //Material Ui Style
 import { withStyles } from '@material-ui/core/styles'

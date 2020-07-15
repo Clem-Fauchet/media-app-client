@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import MyButton from '../utility/MyButton'
+import MyButton from '../../utility/MyButton'
 
 //Redux stuff
 import { connect } from 'react-redux'
-import { editUserDetails } from '../redux/actions/userAction'
+import { editUserDetails } from '../../redux/actions/userAction'
 
 //Material UI
 import { withStyles } from '@material-ui/core/styles'
@@ -17,7 +17,7 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 
 //Icons
-import { ReactComponent as QuillInk } from '../assets/icons/quill-ink.svg'
+import { ReactComponent as QuillInk } from '../../assets/icons/quill-ink.svg'
 
 const styles = (theme) => ({
 	...theme.formulaire,
@@ -36,7 +36,7 @@ function EditDetails(props) {
 
 	useEffect((credentials) => {
 		mapUserDetailsToState(credentials)
-	}, [])
+	}, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 	const handleOpen = () => {
 		setState({ open: true })

@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import dayjs from 'dayjs'
 import { Link } from 'react-router-dom'
 
-import MyButton from '../utility/MyButton'
+import MyButton from '../../utility/MyButton'
 import LikeButton from './LikeButton'
+import Comments from './Comments'
+import CommentForm from './CommentForm'
 
 //Redux Stuff
 import { connect } from 'react-redux'
-import { getPost } from '../redux/actions/dataAction'
+import { getPost, clearErrors } from '../../redux/actions/dataAction'
 
 //Material UI
 import { withStyles } from '@material-ui/core/styles'
@@ -22,14 +24,10 @@ import DialogContent from '@material-ui/core/DialogContent'
 //Icons
 import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined'
 import UnfoldMoreIcon from '@material-ui/icons/UnfoldMore'
-import { ReactComponent as Scroll } from '../assets/icons/scroll-quill.svg'
+import { ReactComponent as Scroll } from '../../assets/icons/scroll-quill.svg'
 
 const styles = (theme) => ({
 	...theme.formulaire,
-
-	invisibleSeparator: {
-		border: 'none',
-	},
 
 	profileImage: {
 		maxWidth: '200px',
@@ -59,11 +57,6 @@ const styles = (theme) => ({
 		marginBottom: '20px',
 	},
 
-	likeDiv: {
-		position: 'absolute',
-		bottom: '5%',
-	},
-
 	likeBox: {
 		margin: '0 1rem 0 0',
 	},
@@ -80,6 +73,7 @@ function PostDialog(props) {
 			commentCount,
 			userImage,
 			userHandle,
+			comments,
 		},
 		UI: { loading },
 	} = props
@@ -94,6 +88,7 @@ function PostDialog(props) {
 
 	const handleClose = () => {
 		setState({ ...state, open: false, errors: {} })
+		props.clearErrors()
 	}
 
 	const dialogMarkup = loading ? (
@@ -121,20 +116,22 @@ function PostDialog(props) {
 				<hr className={classes.invisibleSeparator} />
 				<Typography variant='body1'>{body}</Typography>
 
-				<div className={classes.likeDiv}>
-					<span className={classes.likeBox}>
-						<LikeButton postId={postId} />
-						<span>{likeCount} fires</span>
-					</span>
+				<span className={classes.likeBox}>
+					<LikeButton postId={postId} />
+					<span>{likeCount} fires</span>
+				</span>
 
-					<span className={classes.likeBox}>
-						<MyButton tip='Comment'>
-							<Scroll style={{ fill: '#6F1E51', width: '26' }} />
-						</MyButton>
-						<span>{commentCount} comments</span>
-					</span>
-				</div>
+				<span className={classes.likeBox}>
+					<MyButton tip='Comment'>
+						<Scroll style={{ fill: '#6F1E51', width: '26' }} />
+					</MyButton>
+					<span>{commentCount} comments</span>
+				</span>
 			</Grid>
+			<hr className={classes.visibleSeparator} />
+
+			<CommentForm postId={postId} />
+			<Comments comments={comments} />
 		</Grid>
 	)
 
@@ -172,9 +169,11 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
 	getPost,
+	clearErrors,
 }
 
 PostDialog.propTypes = {
+	clearErrors: PropTypes.func.isRequired,
 	getPost: PropTypes.func.isRequired,
 	postId: PropTypes.string.isRequired,
 	userHandle: PropTypes.string.isRequired,
