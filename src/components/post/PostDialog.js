@@ -128,7 +128,7 @@ function PostDialog(props) {
 					<span>{commentCount} comments</span>
 				</span>
 			</Grid>
-			<hr className={classes.visibleSeparator} />
+			<hr className={classes.visibleSeparator} style={{ width: '95%' }} />
 
 			<CommentForm postId={postId} />
 			<Comments comments={comments} />
