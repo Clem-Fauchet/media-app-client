@@ -70,7 +70,7 @@ function Comments(props) {
 	)
 }
 
-Comment.propTypes = {
+Comments.propTypes = {
 	comments: PropTypes.array.isRequired,
 }
 

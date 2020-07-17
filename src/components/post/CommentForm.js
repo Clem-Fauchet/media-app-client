@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 //Redux Stuff
 import { connect } from 'react-redux'
-import { submitComment } from '../../redux/actions/dataAction'
+import { submitComment, getPosts } from '../../redux/actions/dataAction'
 
 //Material UI
 import { withStyles } from '@material-ui/core/styles'
@@ -43,6 +43,11 @@ function CommentForm(props) {
 		e.preventDefault()
 		props.submitComment(props.postId, { body: state.body })
 		setState({ body: '', errors: {} })
+
+		if (state.body !== '') {
+			const timer = setTimeout(() => props.getPosts(), 3000)
+			return () => clearTimeout(timer)
+		}
 	}
 
 	const commentFormMarkup = authenticated ? (
@@ -82,12 +87,14 @@ const mapStateToProps = (state) => ({
 
 CommentForm.propTypes = {
 	submitComment: PropTypes.func.isRequired,
+	getPosts: PropTypes.func.isRequired,
 	UI: PropTypes.object.isRequired,
 	classes: PropTypes.object.isRequired,
 	postId: PropTypes.string.isRequired,
 	authenticated: PropTypes.bool.isRequired,
 }
 
-export default connect(mapStateToProps, { submitComment })(
-	withStyles(styles)(CommentForm)
-)
+export default connect(mapStateToProps, {
+	submitComment,
+	getPosts,
+})(withStyles(styles)(CommentForm))

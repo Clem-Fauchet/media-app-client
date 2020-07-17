@@ -87,6 +87,7 @@ export const submitComment = (postId, commentData) => (dispatch) => {
 			})
 			dispatch(clearErrors())
 		})
+
 		.catch((err) => {
 			dispatch({
 				type: SET_ERRORS,
