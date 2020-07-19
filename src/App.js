@@ -12,7 +12,7 @@ import { SET_AUTHENTICATED } from './redux/types'
 import { logOutUser, getUserData } from './redux/actions/userAction'
 
 //Material UI stuff
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 
 import themeFile from './utility/theme'
@@ -27,7 +27,8 @@ import Login from './pages/Login'
 import SignUp from './pages/SignUp'
 import User from './pages/User'
 
-const theme = createMuiTheme(themeFile)
+let theme = createMuiTheme(themeFile)
+theme = responsiveFontSizes(theme)
 
 const token = localStorage.FBIdToken
 if (token) {

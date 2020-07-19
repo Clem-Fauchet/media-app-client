@@ -99,7 +99,7 @@ function Profile(props) {
 						{location && (
 							<>
 								<LocationOnOutlinedIcon color='primary' />{' '}
-								<span>{location}</span>
+								<span className='profile-details'>{location}</span>
 								<hr />
 							</>
 						)}
@@ -115,7 +115,9 @@ function Profile(props) {
 						)}
 						<Calendar style={{ fill: '#B33771', width: '22' }} />
 						{'  '}
-						<span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
+						<span className='profile-details'>
+							Joined {dayjs(createdAt).format('MMM YYYY')}
+						</span>
 					</div>
 					<MyButton tip='Log out' onClick={handleLogOut} placement='top'>
 						<KeyboardReturnIcon color='secondary' />

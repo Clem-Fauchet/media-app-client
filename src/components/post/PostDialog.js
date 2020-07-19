@@ -56,10 +56,6 @@ const styles = (theme) => ({
 		marginTop: '50px',
 		marginBottom: '20px',
 	},
-
-	likeBox: {
-		margin: '0 1rem 0 0',
-	},
 })
 
 function PostDialog(props) {
@@ -122,7 +118,7 @@ function PostDialog(props) {
 			<Grid item sm={7}>
 				<Typography
 					component={Link}
-					color='secondary'
+					color='primary'
 					variant='h5'
 					to={`/users/${userHandle}`}
 				>
@@ -135,12 +131,12 @@ function PostDialog(props) {
 				<hr className={classes.invisibleSeparator} />
 				<Typography variant='body1'>{body}</Typography>
 
-				<span className={classes.likeBox}>
+				<span className={`details ${classes.likeBoxDialog}`}>
 					<LikeButton postId={postId} />
 					<span>{likeCount} fires</span>
 				</span>
 
-				<span className={classes.likeBox}>
+				<span className={`details ${classes.likeBoxDialog}`}>
 					<MyButton tip='Comment'>
 						<Scroll style={{ fill: '#6F1E51', width: '26' }} />
 					</MyButton>

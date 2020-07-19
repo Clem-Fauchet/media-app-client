@@ -33,14 +33,19 @@ const LightTooltip = withStyles((theme) => ({
 	},
 }))(Tooltip)
 
-const styles = {}
+const styles = (theme) => ({
+	...theme.custom,
+	notificationButton: {
+		margin: '0 1em',
+	},
+})
 
 function Notifications(props) {
 	const [anchorEl, setAnchorEl] = useState(null)
 
 	dayjs.extend(relativeTime)
 
-	// const { classes } = props
+	const { classes } = props
 	const notifications = props.notifications
 
 	const handleOpen = (e) => {
@@ -123,7 +128,11 @@ function Notifications(props) {
 
 	return (
 		<>
-			<LightTooltip title='Notifications' placement='bottom'>
+			<LightTooltip
+				title='Notifications'
+				placement='bottom'
+				className={classes.notificationButton}
+			>
 				<IconButton
 					onClick={handleOpen}
 					aria-controls={id}

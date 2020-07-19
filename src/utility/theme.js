@@ -1,3 +1,9 @@
+import '../App.scss'
+
+//fonts
+const Nunito = 'Nunito'
+const Lato = 'Lato'
+
 const themeFile = {
 	palette: {
 		primary: {
@@ -14,7 +20,7 @@ const themeFile = {
 	},
 
 	typography: {
-		fontFamily: ['sans-serif'].join(','),
+		fontFamily: [Nunito, Lato].join(','),
 
 		// useNextVariants: true,
 	},
@@ -45,6 +51,11 @@ const themeFile = {
 			fontSize: '0.8rem',
 		},
 
+		caption: {
+			fontFamily: Lato,
+			fontSize: '0.8rem',
+		},
+
 		//Separator
 		invisibleSeparator: {
 			border: 'none',
@@ -62,12 +73,18 @@ const themeFile = {
 			marginBottom: 20,
 		},
 		imageCard: {
-			minWidth: 200,
+			width: 200,
 			objectFit: 'cover',
 		},
 		contentCard: {
 			padding: 25,
 			objectFit: 'cover',
+
+			'& .details': {
+				textAlign: 'center',
+				fontFamily: Lato,
+				fontSize: '0.875rem',
+			},
 		},
 		likeBox: {
 			margin: '0 1rem 0 0.5rem',
@@ -96,6 +113,8 @@ const themeFile = {
 			},
 			'& .profile-details': {
 				textAlign: 'center',
+				fontFamily: Lato,
+				fontSize: '0.875rem',
 				'& span, svg': {
 					verticalAlign: 'middle',
 				},
@@ -128,6 +147,16 @@ const themeFile = {
 			width: '50%',
 			backgroundColor: 'rgba(0,0,0,0.5)',
 			marginBottom: '10px',
+		},
+
+		likeBoxDialog: {
+			margin: '0 1rem 0 0',
+
+			'&.details': {
+				textAlign: 'center',
+				fontFamily: Lato,
+				fontSize: '0.875rem',
+			},
 		},
 	},
 }

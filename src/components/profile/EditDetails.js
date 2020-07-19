@@ -24,6 +24,10 @@ const styles = (theme) => ({
 	button: {
 		float: 'right',
 	},
+
+	title: {
+		color: theme.palette.secondary.main,
+	},
 })
 
 function EditDetails(props) {
@@ -88,7 +92,9 @@ function EditDetails(props) {
 			</MyButton>
 
 			<Dialog open={state.open} onClose={handleClose} fullWidth maxWidth='sm'>
-				<DialogTitle>Edit your details</DialogTitle>
+				<DialogTitle className={classes.title}>
+					Share some details about yourself
+				</DialogTitle>
 				<DialogContent>
 					<form>
 						<TextField

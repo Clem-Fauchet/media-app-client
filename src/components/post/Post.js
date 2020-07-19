@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import MyButton from '../../utility/MyButton'
+import Corner from '../../utility/Corner'
 import LikeButton from './LikeButton'
 import DeletePost from './DeletePost'
 import PostDialog from './PostDialog'
@@ -25,6 +26,14 @@ import { ReactComponent as Scroll } from '../../assets/icons/scroll-quill.svg'
 
 const styles = (theme) => ({
 	...theme.custom,
+
+	corner: {
+		position: 'absolute',
+		width: '20px',
+		height: '20px',
+		top: '0',
+		right: '0',
+	},
 })
 
 function Post(props) {
@@ -77,20 +86,22 @@ function Post(props) {
 
 				<span className={classes.likeBox}>
 					<LikeButton postId={postId} />
-					<span>{likeCount} fires</span>
+					<span className='details'>{likeCount} fires</span>
 				</span>
 
 				<span className={classes.likeBox}>
 					<MyButton tip='Comment'>
 						<Scroll style={{ fill: '#6F1E51', width: '26' }} />
 					</MyButton>
-					<span>{commentCount} comments</span>
+					<span className='details'>{commentCount} comments</span>
 				</span>
 				<PostDialog
 					postId={postId}
 					userHandle={userHandle}
 					openDialog={props.openDialog}
 				/>
+
+				<Corner corner={classes.corner} />
 			</CardContent>
 		</Card>
 	)

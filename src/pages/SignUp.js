@@ -17,6 +17,10 @@ import { CircularProgress } from '@material-ui/core'
 
 const styles = (theme) => ({
 	...theme.custom,
+
+	textField: {
+		margin: '1em 0',
+	},
 })
 
 function SignUp(props) {
@@ -149,7 +153,7 @@ function SignUp(props) {
 						)}
 					</Button>
 					<br />
-					<Typography>
+					<Typography variant='caption' className={classes.caption}>
 						<small>
 							Already have an account? Login <Link to='/login'>here</Link>
 						</small>
