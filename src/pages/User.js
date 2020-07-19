@@ -16,13 +16,18 @@ import StaticProfile from '../components/profile/StaticProfile'
 function User(myData) {
 	const [state, setState] = useState({
 		profile: null,
+		postIdParam: null,
 	})
 
-	const { data } = myData
+	const { postIdParam } = state
+	const { posts, loading } = myData.data
 
 	useEffect(() => {
 		const handle = myData.match.params.handle
+		const postId = myData.match.params.postId
 		myData.getUserData(handle)
+
+		if (postId) setState({ ...state, postIdParam: postId })
 
 		axios
 			.get(`/user/${handle}`)
@@ -32,12 +37,18 @@ function User(myData) {
 			.catch((err) => console.error(err))
 	}, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-	let postsMarkup = data.loading ? (
+	let postsMarkup = loading ? (
 		<p>Loading data....</p>
-	) : data.posts === null ? (
+	) : posts === null ? (
 		<p>No posts from this user</p>
+	) : !postIdParam ? (
+		posts.map((post) => <Post post={post} key={post.postId} />)
 	) : (
-		data.posts.map((post) => <Post post={post} key={post.postId} />)
+		posts.map((post) => {
+			if (post.postId !== postIdParam)
+				return <Post post={post} key={post.postId} />
+			else return <Post post={post} key={post.postId} openDialog />
+		})
 	)
 
 	return (

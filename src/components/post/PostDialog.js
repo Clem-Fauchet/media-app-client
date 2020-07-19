@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import dayjs from 'dayjs'
 import { Link } from 'react-router-dom'
@@ -80,13 +80,32 @@ function PostDialog(props) {
 
 	const [state, setState] = useState({
 		open: false,
+		oldPath: '',
+		newPath: '',
 	})
+
+	useEffect(() => {
+		if (props.openDialog) {
+			handleOpen()
+		}
+	}, []) // eslint-disable-line react-hooks/exhaustive-deps
+
 	const handleOpen = () => {
-		setState({ ...state, open: true })
+		let oldPath = window.location.pathname
+
+		const { userHandle, postId } = props
+		const newPath = `/users/${userHandle}/post/${postId}`
+
+		if (oldPath === newPath) oldPath = `/users/${userHandle}`
+
+		window.history.pushState(null, null, newPath)
+
+		setState({ ...state, open: true, oldPath, newPath })
 		props.getPost(props.postId)
 	}
 
 	const handleClose = () => {
+		window.history.pushState(null, null, state.oldPath)
 		setState({ ...state, open: false, errors: {} })
 		props.clearErrors()
 	}

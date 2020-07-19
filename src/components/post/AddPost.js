@@ -82,6 +82,8 @@ function AddPost(props) {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		props.addPost({ body: state.body })
+
+		setState({ open: false, body: '', errors: {} })
 	}
 
 	return (

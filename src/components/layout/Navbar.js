@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import MyButton from '../../utility/MyButton'
 import AddPost from '../post/AddPost'
+import Notifications from './Notifications'
 
 //Redux Stuff
 import { connect } from 'react-redux'
@@ -16,7 +17,6 @@ import Button from '@material-ui/core/Button'
 
 //Icons
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded'
-import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined'
 
 const styles = (theme) => ({
 	...theme.navBar,
@@ -41,9 +41,7 @@ function Navbar(props) {
 								</Link>
 							</MyButton>
 
-							<MyButton tip='Notifications' btnClassName={classes.navButton}>
-								<NotificationsNoneOutlinedIcon />
-							</MyButton>
+							<Notifications />
 						</>
 					) : (
 						<>

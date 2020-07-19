@@ -100,7 +100,11 @@ function Post(props) {
 					</MyButton>
 					<span>{commentCount} comments</span>
 				</span>
-				<PostDialog postId={postId} userHandle={userHandle} />
+				<PostDialog
+					postId={postId}
+					userHandle={userHandle}
+					openDialog={props.openDialog}
+				/>
 			</CardContent>
 		</Card>
 	)
@@ -110,6 +114,7 @@ Post.propTypes = {
 	user: PropTypes.object.isRequired,
 	post: PropTypes.object.isRequired,
 	classes: PropTypes.object.isRequired,
+	openDialog: PropTypes.bool,
 }
 
 const mapStateToProps = (state) => ({

@@ -6,7 +6,7 @@ const themeFile = {
 		},
 		secondary: {
 			main: '#6F1E51',
-			contrastText: '#7A7A7A',
+			contrastText: '#FFF',
 		},
 		error: {
 			main: '#d32f2f',
