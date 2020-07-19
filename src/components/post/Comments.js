@@ -9,7 +9,7 @@ import { Grid } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 
 const styles = (theme) => ({
-	...theme.formulaire,
+	...theme.custom,
 
 	commentImage: {
 		mawWidth: '100%',

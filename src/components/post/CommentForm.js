@@ -12,7 +12,7 @@ import { Grid } from '@material-ui/core'
 import { TextField } from '@material-ui/core'
 
 const styles = (theme) => ({
-	...theme.formulaire,
+	...theme.custom,
 })
 
 function CommentForm(props) {

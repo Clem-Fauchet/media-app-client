@@ -20,7 +20,7 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import { ReactComponent as QuillInk } from '../../assets/icons/quill-ink.svg'
 
 const styles = (theme) => ({
-	...theme.formulaire,
+	...theme.custom,
 	button: {
 		float: 'right',
 	},

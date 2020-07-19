@@ -6,6 +6,8 @@ import dayjs from 'dayjs'
 import EditDetails from './EditDetails'
 import MyButton from '../../utility/MyButton'
 
+import ProfileSkeleton from '../../utility/ProfileSkeleton'
+
 //Redux stuff
 import { connect } from 'react-redux'
 import { logOutUser, uploadImage } from '../../redux/actions/userAction'
@@ -24,45 +26,7 @@ import { ReactComponent as QuillInk } from '../../assets/icons/quill-ink.svg'
 import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn'
 
 const styles = (theme) => ({
-	paper: {
-		padding: 20,
-	},
-	profile: {
-		'& .image-wrapper': {
-			textAlign: 'center',
-			position: 'relative',
-			'& button': {
-				position: 'absolute',
-				top: '80%',
-				left: '75%',
-			},
-		},
-		'& .profile-image': {
-			width: 200,
-			height: 200,
-			objectFit: 'cover',
-			maxWidth: '100%',
-			borderRadius: '50%',
-		},
-		'& .profile-details': {
-			textAlign: 'center',
-			'& span, svg': {
-				verticalAlign: 'middle',
-			},
-			'& a': {
-				color: '#00bcd4',
-			},
-		},
-		'& hr': {
-			border: 'none',
-			margin: '0 0 10px 0',
-		},
-		'& svg.button': {
-			'&:hover': {
-				cursor: 'pointer',
-			},
-		},
-	},
+	...theme.custom,
 	buttons: {
 		textAlign: 'center',
 		'& a': {
@@ -185,7 +149,7 @@ function Profile(props) {
 			</Paper>
 		)
 	) : (
-		<p>Loading...</p>
+		<ProfileSkeleton />
 	)
 
 	return profileMarkup

@@ -27,7 +27,7 @@ import UnfoldMoreIcon from '@material-ui/icons/UnfoldMore'
 import { ReactComponent as Scroll } from '../../assets/icons/scroll-quill.svg'
 
 const styles = (theme) => ({
-	...theme.formulaire,
+	...theme.custom,
 
 	profileImage: {
 		maxWidth: '200px',

@@ -21,7 +21,7 @@ import AddOutlinedIcon from '@material-ui/icons/AddOutlined'
 import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined'
 
 const styles = (theme) => ({
-	...theme.formulaire,
+	...theme.custom,
 	navButton: {
 		margin: '0 1em',
 	},

@@ -19,7 +19,8 @@ const themeFile = {
 		// useNextVariants: true,
 	},
 
-	formulaire: {
+	custom: {
+		//Form
 		form: {
 			textAlign: 'center',
 		},
@@ -44,6 +45,7 @@ const themeFile = {
 			fontSize: '0.8rem',
 		},
 
+		//Separator
 		invisibleSeparator: {
 			border: 'none',
 		},
@@ -52,9 +54,82 @@ const themeFile = {
 			width: '100%',
 			borderBottom: '1px solid rgba(0,0,0,0.1)',
 		},
-	},
 
-	navBar: {},
+		//Card
+		card: {
+			position: 'relative',
+			display: 'flex',
+			marginBottom: 20,
+		},
+		imageCard: {
+			minWidth: 200,
+			objectFit: 'cover',
+		},
+		contentCard: {
+			padding: 25,
+			objectFit: 'cover',
+		},
+		likeBox: {
+			margin: '0 1rem 0 0.5rem',
+		},
+
+		//Profile
+		paper: {
+			padding: 20,
+		},
+		profile: {
+			'& .image-wrapper': {
+				textAlign: 'center',
+				position: 'relative',
+				'& button': {
+					position: 'absolute',
+					top: '80%',
+					left: '75%',
+				},
+			},
+			'& .profile-image': {
+				width: 200,
+				height: 200,
+				objectFit: 'cover',
+				maxWidth: '100%',
+				borderRadius: '50%',
+			},
+			'& .profile-details': {
+				textAlign: 'center',
+				'& span, svg': {
+					verticalAlign: 'middle',
+				},
+				'& a': {
+					color: '#B33771',
+				},
+			},
+			'& hr': {
+				border: 'none',
+				margin: '0 0 10px 0',
+			},
+			'& svg.button': {
+				'&:hover': {
+					cursor: 'pointer',
+				},
+			},
+		},
+
+		//SKeleton
+
+		fullLine: {
+			height: '15px',
+			width: '90%',
+			marginBottom: '10px',
+			backgroundColor: 'rgba(0,0,0,0.5)',
+		},
+
+		halfLine: {
+			height: '15px',
+			width: '50%',
+			backgroundColor: 'rgba(0,0,0,0.5)',
+			marginBottom: '10px',
+		},
+	},
 }
 
 export default themeFile

@@ -19,7 +19,7 @@ import Button from '@material-ui/core/Button'
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded'
 
 const styles = (theme) => ({
-	...theme.navBar,
+	...theme.custom,
 	navButton: {
 		margin: '0 1em',
 	},

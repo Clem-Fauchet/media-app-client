@@ -13,6 +13,9 @@ import { Grid } from '@material-ui/core'
 import Post from '../components/post/Post'
 import StaticProfile from '../components/profile/StaticProfile'
 
+import PostSkeleton from '../utility/PostSkeleton'
+import ProfileSkeleton from '../utility/ProfileSkeleton'
+
 function User(myData) {
 	const [state, setState] = useState({
 		profile: null,
@@ -38,7 +41,7 @@ function User(myData) {
 	}, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 	let postsMarkup = loading ? (
-		<p>Loading data....</p>
+		<PostSkeleton />
 	) : posts === null ? (
 		<p>No posts from this user</p>
 	) : !postIdParam ? (
@@ -58,7 +61,7 @@ function User(myData) {
 			</Grid>
 			<Grid item sm={4} xs={12}>
 				{state.profile === null ? (
-					<p>Loading profile...</p>
+					<ProfileSkeleton />
 				) : (
 					<StaticProfile profile={state.profile} />
 				)}

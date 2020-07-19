@@ -12,6 +12,8 @@ import { Grid } from '@material-ui/core'
 import Post from '../components/post/Post'
 import Profile from '../components/profile/Profile.js'
 
+import PostSkeleton from '../utility/PostSkeleton'
+
 function Home(myData) {
 	const { data } = myData
 
@@ -22,7 +24,7 @@ function Home(myData) {
 	let recentPostsMarkup = !data.loading ? (
 		data.posts.map((post, key) => <Post post={post} key={key} />)
 	) : (
-		<p>Loading...</p>
+		<PostSkeleton />
 	)
 
 	return (

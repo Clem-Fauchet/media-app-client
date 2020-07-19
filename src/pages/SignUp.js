@@ -16,7 +16,7 @@ import { Button } from '@material-ui/core'
 import { CircularProgress } from '@material-ui/core'
 
 const styles = (theme) => ({
-	...theme.formulaire,
+	...theme.custom,
 })
 
 function SignUp(props) {

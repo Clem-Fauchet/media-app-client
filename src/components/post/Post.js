@@ -23,23 +23,9 @@ import { Typography } from '@material-ui/core'
 //Icons
 import { ReactComponent as Scroll } from '../../assets/icons/scroll-quill.svg'
 
-const styles = {
-	card: {
-		position: 'relative',
-		display: 'flex',
-		marginBottom: 20,
-	},
-	image: {
-		width: 200,
-	},
-	content: {
-		padding: 25,
-		objectFit: 'cover',
-	},
-	likeBox: {
-		margin: '0 1rem 0 0.5rem',
-	},
-}
+const styles = (theme) => ({
+	...theme.custom,
+})
 
 function Post(props) {
 	dayjs.extend(relativeTime)
@@ -71,9 +57,9 @@ function Post(props) {
 			<CardMedia
 				image={userImage}
 				title='Profile image'
-				className={classes.image}
+				className={classes.imageCard}
 			/>
-			<CardContent className={classes.content}>
+			<CardContent className={classes.contentCard}>
 				<Typography
 					variant='h5'
 					component={Link}
