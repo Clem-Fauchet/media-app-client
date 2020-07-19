@@ -30,6 +30,9 @@ import User from './pages/User'
 let theme = createMuiTheme(themeFile)
 theme = responsiveFontSizes(theme)
 
+axios.defaults.baseUrl =
+	'https://europe-west1-social-app-d3519.cloudfunctions.net/api'
+
 const token = localStorage.FBIdToken
 if (token) {
 	const decodedToken = jwtDecode(token)
