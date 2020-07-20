@@ -154,9 +154,9 @@ function SignUp(props) {
 					</Button>
 					<br />
 					<Typography variant='caption' className={classes.caption}>
-						<small>
+					
 							Already have an account? Login <Link to='/login'>here</Link>
-						</small>
+			
 					</Typography>
 				</form>
 			</Grid>

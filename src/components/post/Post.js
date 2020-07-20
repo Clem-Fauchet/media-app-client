@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import MyButton from '../../utility/MyButton'
 import Corner from '../../utility/Corner'
 import LikeButton from './LikeButton'
 import DeletePost from './DeletePost'
@@ -33,6 +32,15 @@ const styles = (theme) => ({
 		height: '20px',
 		top: '0',
 		right: '0',
+	},
+
+	commentButton: {
+		backgroundColor: 'transparent',
+		transition: 'none',
+		'&:hover': {
+			cursor: 'default',
+			backgroundColor: 'transparent',
+		},
 	},
 })
 
@@ -90,9 +98,11 @@ function Post(props) {
 				</span>
 
 				<span className={classes.likeBox}>
-					<MyButton tip='Comment'>
+					<button
+						className={`MuiButtonBase-root MuiIconButton-root ${classes.commentButton}`}
+					>
 						<Scroll style={{ fill: '#6F1E51', width: '26' }} />
-					</MyButton>
+					</button>
 					<span className='details'>{commentCount} comments</span>
 				</span>
 				<PostDialog
